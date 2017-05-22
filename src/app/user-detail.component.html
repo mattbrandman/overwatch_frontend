@@ -1,0 +1,10 @@
+<div class="col-md-8" *ngIf="user">
+	<h1>{{user.username}}</h1>
+	<h3> Wins - Losses - Draws</h3>
+	<h3>{{user.wins}} - {{user.losses}} - {{user.draws}}</h3>
+	<button type="button" class="btn btn-primary" (click)="websocketTest()">Find Match</button>
+</div>
+
+<div class="col-md-4" *ngIf="in_queue">
+	<h3>Queueing.  Please remain on this page!</h3>
+</div>
