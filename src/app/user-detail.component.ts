@@ -11,7 +11,8 @@ import * as io from 'socket.io-client';
 export class UserDetailComponent implements OnInit{
   public user: User;
   mode = 'Observable';
-  public in_queue: boolean = false
+  public in_queue: boolean = false;
+  private socket: any;
   constructor(
     private authService: AuthService) {}
 
@@ -19,24 +20,30 @@ export class UserDetailComponent implements OnInit{
     this.authService.get_profile()
                      .subscribe(
                        new_user => this.user = new_user);
-  }
 
-  websocketTest() {
     var jwt = localStorage.getItem('token');
-    var socket = io('http://localhost:8080');
-    socket.on('connect', function() {
-      socket.emit('authenticate', {token: jwt})
+    
+    this.socket = io('http://localhost:8080');
+
+    this.socket.on('connect', (function() {
+      this.socket.emit('authenticate', {token: jwt})
             .on('authenticated', function() {
               console.log('success')
             })
-    });
-    socket.on('message', (function(message: any) {
-      if (message.data === "in queue") {
-        console.log('yes');
-        this.in_queue = true;
-      } else {
-        console.log(message.data);
-      }}).bind(this));
+    }).bind(this));
+    this.socket.on('message', 
+                 (function(data:any){
+                   if (data.data == 'in queue') {
+                   console.log(data);
+                   this.in_queue = true;
+                 } else if (data.data == 'found game') {
+                   console.log(data)
+                 }
+                 }).bind(this));
+  }
+
+  websocketTest() {
+    this.socket.emit('message');
   }
 
 }

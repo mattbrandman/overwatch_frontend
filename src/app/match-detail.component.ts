@@ -1,18 +1,18 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { User } from './user';
+import { MatchService } from './match.service';
 @Component({
   selector: 'match-detail',
   template: `
-  	<div class="col-md-6">
-  		<team-detail [team] = "team1"></team-detail>
-  	</div>
-  	<div class="col-md-6">
-  		<team-detail [team] = "team2"></team-detail>
-  	</div>
-  `
+
+  `,
+  providers: [MatchService]
 })
-export class MatchDetailComponent {
-  @Input() team1: User[];
-  @Input() team2: User[];
-  @Input() map: number;
+export class MatchDetailComponent implements OnInit {
+  
+  constructor(private matchService: MatchService){}
+  ngOnInit(){
+    this.matchService.get_match()
+                      .subscribe(data => console.log(data));
+  }
 }

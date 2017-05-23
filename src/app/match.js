@@ -1,8 +1,6 @@
 "use strict";
 var Match = (function () {
-    function Match(captainA, captainB, teamA, teamB, map) {
-        this.captainA = captainA;
-        this.captainB = captainB;
+    function Match(teamA, teamB, map) {
         this.teamA = teamA;
         this.teamB = teamB;
         this.map = map;

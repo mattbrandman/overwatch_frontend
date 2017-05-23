@@ -9,28 +9,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
+var match_service_1 = require("./match.service");
 var MatchDetailComponent = (function () {
-    function MatchDetailComponent() {
+    function MatchDetailComponent(matchService) {
+        this.matchService = matchService;
     }
+    MatchDetailComponent.prototype.ngOnInit = function () {
+        this.matchService.get_match()
+            .subscribe(function (data) { return console.log(data); });
+    };
     return MatchDetailComponent;
 }());
-__decorate([
-    core_1.Input(),
-    __metadata("design:type", Array)
-], MatchDetailComponent.prototype, "team1", void 0);
-__decorate([
-    core_1.Input(),
-    __metadata("design:type", Array)
-], MatchDetailComponent.prototype, "team2", void 0);
-__decorate([
-    core_1.Input(),
-    __metadata("design:type", Number)
-], MatchDetailComponent.prototype, "map", void 0);
 MatchDetailComponent = __decorate([
     core_1.Component({
         selector: 'match-detail',
-        template: "\n  \t<div class=\"col-md-6\">\n  \t\t<team-detail [team] = \"team1\"></team-detail>\n  \t</div>\n  \t<div class=\"col-md-6\">\n  \t\t<team-detail [team] = \"team2\"></team-detail>\n  \t</div>\n  "
-    })
+        template: "\n\n  ",
+        providers: [match_service_1.MatchService]
+    }),
+    __metadata("design:paramtypes", [match_service_1.MatchService])
 ], MatchDetailComponent);
 exports.MatchDetailComponent = MatchDetailComponent;
 //# sourceMappingURL=match-detail.component.js.map

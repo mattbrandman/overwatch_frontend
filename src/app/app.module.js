@@ -19,6 +19,7 @@ var auth_module_1 = require("./auth.module");
 var appRoutes = [
     { path: 'signup', component: user_auth_form_component_1.UserAuthFormComponent },
     { path: 'profile', component: user_detail_component_1.UserDetailComponent },
+    { path: 'match', component: match_detail_component_1.MatchDetailComponent },
     {
         path: '',
         redirectTo: '/signup',

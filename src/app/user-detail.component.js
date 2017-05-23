@@ -21,25 +21,26 @@ var UserDetailComponent = (function () {
         var _this = this;
         this.authService.get_profile()
             .subscribe(function (new_user) { return _this.user = new_user; });
-    };
-    UserDetailComponent.prototype.websocketTest = function () {
         var jwt = localStorage.getItem('token');
-        var socket = io('http://localhost:8080');
-        socket.on('connect', function () {
-            socket.emit('authenticate', { token: jwt })
+        this.socket = io('http://localhost:8080');
+        this.socket.on('connect', (function () {
+            this.socket.emit('authenticate', { token: jwt })
                 .on('authenticated', function () {
                 console.log('success');
             });
-        });
-        socket.on('message', (function (message) {
-            if (message.data === "in queue") {
-                console.log('yes');
+        }).bind(this));
+        this.socket.on('message', (function (data) {
+            if (data.data == 'in queue') {
+                console.log(data);
                 this.in_queue = true;
             }
-            else {
-                console.log(message.data);
+            else if (data.data == 'found game') {
+                console.log(data);
             }
         }).bind(this));
+    };
+    UserDetailComponent.prototype.websocketTest = function () {
+        this.socket.emit('message');
     };
     return UserDetailComponent;
 }());

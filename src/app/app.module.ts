@@ -14,6 +14,7 @@ import { AuthModule } from './auth.module'
 const appRoutes: Routes = [
 	{path: 'signup', component: UserAuthFormComponent},
   {path: 'profile', component: UserDetailComponent},
+  {path: 'match', component: MatchDetailComponent}
   {
     path: '', 
     redirectTo: '/signup',
