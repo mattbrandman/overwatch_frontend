@@ -9,6 +9,8 @@ var core_1 = require("@angular/core");
 var platform_browser_1 = require("@angular/platform-browser");
 var forms_1 = require("@angular/forms");
 var app_component_1 = require("./app.component");
+var ng_bootstrap_1 = require("@ng-bootstrap/ng-bootstrap");
+var readycheck_modal_component_1 = require("./readycheck-modal.component");
 var team_detail_component_1 = require("./team-detail.component");
 var match_detail_component_1 = require("./match-detail.component");
 var user_auth_form_component_1 = require("./user-auth-form.component");
@@ -37,15 +39,19 @@ AppModule = __decorate([
             http_1.HttpModule,
             forms_1.FormsModule,
             router_1.RouterModule.forRoot(appRoutes),
-            auth_module_1.AuthModule],
+            auth_module_1.AuthModule,
+            ng_bootstrap_1.NgbModule.forRoot(),],
         declarations: [
             app_component_1.AppComponent,
             team_detail_component_1.TeamDetailComponent,
             match_detail_component_1.MatchDetailComponent,
             user_auth_form_component_1.UserAuthFormComponent,
             user_detail_component_1.UserDetailComponent,
+            readycheck_modal_component_1.NgbdModalComponent,
+            readycheck_modal_component_1.NgbdModalContent,
         ],
-        bootstrap: [app_component_1.AppComponent]
+        bootstrap: [app_component_1.AppComponent],
+        entryComponents: [readycheck_modal_component_1.NgbdModalContent]
     })
 ], AppModule);
 exports.AppModule = AppModule;

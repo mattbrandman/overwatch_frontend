@@ -2,19 +2,23 @@ import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms'
 import { AppComponent }  from './app.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
+import { NgbdModalComponent, NgbdModalContent } from './readycheck-modal.component';
 import { TeamDetailComponent } from './team-detail.component';
 import { MatchDetailComponent } from './match-detail.component';
 import { UserAuthFormComponent} from './user-auth-form.component';
 import { UserDetailComponent } from './user-detail.component';
-
 import { HttpModule, JsonpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router'; 
-import { AuthModule } from './auth.module'
+import { AuthModule } from './auth.module';
+
+
+
 const appRoutes: Routes = [
 	{path: 'signup', component: UserAuthFormComponent},
   {path: 'profile', component: UserDetailComponent},
-  {path: 'match', component: MatchDetailComponent}
+  {path: 'match', component: MatchDetailComponent},
   {
     path: '', 
     redirectTo: '/signup',
@@ -27,14 +31,19 @@ const appRoutes: Routes = [
                   HttpModule, 
                   FormsModule, 
                   RouterModule.forRoot(appRoutes), 
-                  AuthModule],
+                  AuthModule,
+                  NgbModule.forRoot(),],
+
   declarations: [ 
   	AppComponent,
   	TeamDetailComponent,
   	MatchDetailComponent,
   	UserAuthFormComponent,
     UserDetailComponent,
+    NgbdModalComponent,
+    NgbdModalContent,
   ],
-  bootstrap:    [ AppComponent ]
+  bootstrap:    [ AppComponent ],
+  entryComponents: [NgbdModalContent]
 })
 export class AppModule { }

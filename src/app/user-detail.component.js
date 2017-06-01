@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var auth_service_1 = require("./auth.service");
 var io = require("socket.io-client");
+var readycheck_modal_component_1 = require("./readycheck-modal.component");
 var UserDetailComponent = (function () {
     function UserDetailComponent(authService) {
         this.authService = authService;
@@ -29,21 +30,32 @@ var UserDetailComponent = (function () {
                 console.log('success');
             });
         }).bind(this));
-        this.socket.on('message', (function (data) {
-            if (data.data == 'in queue') {
-                console.log(data);
-                this.in_queue = true;
-            }
-            else if (data.data == 'found game') {
-                console.log(data);
-            }
-        }).bind(this));
+        this.socket.on('inQueue', function () {
+            console.log('answered');
+        });
     };
-    UserDetailComponent.prototype.websocketTest = function () {
-        this.socket.emit('message');
+    UserDetailComponent.prototype.ngAfterViewInit = function () {
+        var socket = this.socket;
+        var readyModal = this.readyModal;
+        socket.on('readyCheck', function () {
+            var readyPromise = readyModal.open();
+            readyPromise.then(function (result) {
+                if (result == 'Ready') {
+                    socket.emit('Ready');
+                }
+            });
+        });
+    };
+    UserDetailComponent.prototype.joinQueue = function () {
+        var socket = this.socket;
+        socket.emit('joinQueue');
     };
     return UserDetailComponent;
 }());
+__decorate([
+    core_1.ViewChild(readycheck_modal_component_1.NgbdModalComponent),
+    __metadata("design:type", readycheck_modal_component_1.NgbdModalComponent)
+], UserDetailComponent.prototype, "readyModal", void 0);
 UserDetailComponent = __decorate([
     core_1.Component({
         selector: 'user-detail',

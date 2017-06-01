@@ -21,6 +21,7 @@ export class MatchService {
 
   private extractData(res: Response) {
   	let body = res.json()
+    console.log(body);
   	return body;
   }
 

@@ -1,18 +1,20 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { User } from './user';
 import { AuthService } from './auth.service'
 import * as io from 'socket.io-client';
+import { NgbdModalComponent } from './readycheck-modal.component'
 
 @Component({
   selector: 'user-detail',
   templateUrl: './user-detail.component.html',
-  providers: [ AuthService ],
+  providers: [ AuthService],
 })
-export class UserDetailComponent implements OnInit{
+export class UserDetailComponent implements OnInit, AfterViewInit {
   public user: User;
   mode = 'Observable';
   public in_queue: boolean = false;
   private socket: any;
+  @ViewChild(NgbdModalComponent) readyModal: NgbdModalComponent;
   constructor(
     private authService: AuthService) {}
 
@@ -31,19 +33,32 @@ export class UserDetailComponent implements OnInit{
               console.log('success')
             })
     }).bind(this));
-    this.socket.on('message', 
-                 (function(data:any){
-                   if (data.data == 'in queue') {
-                   console.log(data);
-                   this.in_queue = true;
-                 } else if (data.data == 'found game') {
-                   console.log(data)
-                 }
-                 }).bind(this));
+
+    this.socket.on('inQueue', function() {
+      console.log('answered');
+    });
+
   }
 
-  websocketTest() {
-    this.socket.emit('message');
+  ngAfterViewInit() {
+    var socket = this.socket
+    var readyModal = this.readyModal
+    socket.on('readyCheck', 
+      function() {
+        var readyPromise = readyModal.open();
+        readyPromise.then(
+          function(result:any) {
+            if(result == 'Ready') {
+              socket.emit('Ready')
+            }
+          });
+        });
+  }
+
+  joinQueue() {
+    var socket = this.socket;
+    socket.emit('joinQueue');
+
   }
 
 }

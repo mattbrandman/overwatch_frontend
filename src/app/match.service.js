@@ -28,6 +28,7 @@ var MatchService = (function () {
     };
     MatchService.prototype.extractData = function (res) {
         var body = res.json();
+        console.log(body);
         return body;
     };
     MatchService.prototype.handleError = function (error) {
