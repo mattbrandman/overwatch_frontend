@@ -5,6 +5,7 @@ import { Match } from './match';
 import { Router } from '@angular/router';
 import { AuthHttp } from 'angular2-jwt';
 import { Observable } from 'rxjs/Observable';
+import { Player } from './player';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
@@ -13,16 +14,22 @@ export class MatchService {
 
   constructor(private http: Http, private router: Router, private authHttp: AuthHttp) {}
 
+  //we need to pass in this to map in order
+  //for it to allow for nested calls 
+  //fat arrow functions bind the scope lexically automatically
   get_match(): Observable<Match> {
     return this.authHttp.get('http://localhost:8080/api/match/')
-    					.map(this.extractData)
+    					.map(val => this.extractData(val))
     					.catch(this.handleError); 
   }
-
-  private extractData(res: Response) {
-  	let body = res.json()
-    console.log(body);
-  	return body;
+ 
+  extractData(res: Response): number {
+  	let body = res.json();
+    let players = body.players;
+    var team1 = this.filterByTeam(players, 1);
+    var team2 = this.filterByTeam(players, 2);
+    var match = new Match(team1, team2);
+  	return match;
   }
 
   private handleError (error: Response | any) {
@@ -38,4 +45,18 @@ export class MatchService {
     console.error(errMsg);
     return Observable.throw(errMsg);
   }
+
+  filterByTeam(players: any[], teamNumber: number) {
+    return players.filter(function(el){return teamNumber == el.team})
+  }
+
+  vote_for_team(winners: number): Observable<string> {
+    let body = { winning_team: winners };
+    return this.authHttp.post('http://localhost:8080/api/match/vote', body)
+              .map(val => val)
+              .catch(this.handleError); 
+  }
 }
+
+
+

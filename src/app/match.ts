@@ -3,7 +3,8 @@ import { Player } from './player';
 export class Match {
 
 	constructor(
-		public players: Player[],
+		public team1: Player[],
+		public team2: Player[]
 	) { }
 
 }

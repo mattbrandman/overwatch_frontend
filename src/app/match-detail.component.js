@@ -13,17 +13,25 @@ var match_service_1 = require("./match.service");
 var MatchDetailComponent = (function () {
     function MatchDetailComponent(matchService) {
         this.matchService = matchService;
+        this.teamVote = 0;
+        this.mode = 'Observable';
     }
     MatchDetailComponent.prototype.ngOnInit = function () {
+        var _this = this;
         this.matchService.get_match()
-            .subscribe(function (data) { return console.log(data); });
+            .subscribe(function (data) { return _this.match = data; });
+    };
+    MatchDetailComponent.prototype.clicker = function (winner) {
+        this.teamVote = winner;
+        this.matchService.vote_for_team(winner).subscribe(function (answer) { return console.log(answer); });
+        this.voted_on = winner;
     };
     return MatchDetailComponent;
 }());
 MatchDetailComponent = __decorate([
     core_1.Component({
         selector: 'match-detail',
-        template: "\n\n  ",
+        templateUrl: './match-detail.component.html',
         providers: [match_service_1.MatchService]
     }),
     __metadata("design:paramtypes", [match_service_1.MatchService])

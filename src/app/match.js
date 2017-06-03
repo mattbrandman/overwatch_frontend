@@ -1,7 +1,8 @@
 "use strict";
 var Match = (function () {
-    function Match(players) {
-        this.players = players;
+    function Match(team1, team2) {
+        this.team1 = team1;
+        this.team2 = team2;
     }
     return Match;
 }());

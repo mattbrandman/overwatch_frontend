@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { User } from './user';
+import { Player } from './player';
 @Component({
   selector: 'team-detail',
   template: `
@@ -11,5 +11,5 @@ import { User } from './user';
   `
 })
 export class TeamDetailComponent {
-  @Input() team: User[];
+  @Input() team: Player[];
 }
