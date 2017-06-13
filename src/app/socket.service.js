@@ -19,11 +19,13 @@ var OwSocket = (function () {
             var jwt = localStorage.getItem('token');
             this.socket = io(this.url);
             this.socket.on('connect', (function () {
-                this.socket.emit('authenticate', { token: jwt })
-                    .on('authenticated', function () {
+                this.socket.emit('authenticate', { token: jwt });
+                this.socket.on('authenticated', function () {
                     console.log('success');
                 });
             }).bind(this));
+            this.connected = true;
+            console.log(this.connected);
         }
     };
     OwSocket.prototype.getSocket = function () {

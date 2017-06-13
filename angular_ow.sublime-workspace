@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"socket",
+				"socketService\tproperty"
+			],
+			[
+				"get",
+				"getSocket\tmethod"
+			],
+			[
 				"ma",
 				"matchService\tproperty"
 			],
@@ -22,10 +30,6 @@
 			[
 				"re",
 				"readycheck-modal.component\tscript"
-			],
-			[
-				"get",
-				"get_match\tmethod"
 			],
 			[
 				"service",
@@ -510,37 +514,34 @@
 			[
 				"lea",
 				"leader"
-			],
-			[
-				"fail",
-				"failing_servers\tstatement"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"file": "src/app/match.service.ts",
+			"file": "src/app/user-auth-form.component.ts",
 			"settings":
 			{
-				"buffer_size": 1955,
+				"buffer_size": 1545,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "src/app/match.ts",
+			"file": "src/app/user-detail.component.html",
 			"settings":
 			{
-				"buffer_size": 132,
+				"buffer_size": 394,
+				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "src/app/match-detail.component.html",
+			"file": "src/app/user-detail.component.ts",
 			"settings":
 			{
-				"buffer_size": 539,
+				"buffer_size": 1777,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -549,7 +550,24 @@
 			"file": "src/app/match-detail.component.ts",
 			"settings":
 			{
-				"buffer_size": 789,
+				"buffer_size": 1074,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/app/auth.service.ts",
+			"settings":
+			{
+				"buffer_size": 1666,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/app/socket.service.ts",
+			"settings":
+			{
+				"buffer_size": 1037,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -743,28 +761,27 @@
 	[
 		"/Users/matthewbrandman/overwatchSite",
 		"/Users/matthewbrandman/overwatchSite/node_modules/rxjs",
-		"/Users/matthewbrandman/overwatchSite/node_modules/rxjs/src",
 		"/Users/matthewbrandman/overwatchSite/src",
 		"/Users/matthewbrandman/overwatchSite/src/app"
 	],
 	"file_history":
 	[
+		"/Users/matthewbrandman/overwatchSite/src/app/match-detail.component.html",
+		"/Users/matthewbrandman/overwatchSite/src/app/user-detail.component.ts",
+		"/Users/matthewbrandman/overwatchSite/src/app/app.module.ts",
+		"/Users/matthewbrandman/overwatchSite/src/index.html",
+		"/Users/matthewbrandman/overwatchSite/src/app/user-detail.component.html",
+		"/Users/matthewbrandman/overwatchSite/src/app/match.service.ts",
 		"/Users/matthewbrandman/overwatchSite/node_modules/rxjs/Observable.d.ts",
 		"/Users/matthewbrandman/overwatchSite/src/app/team-detail.component.ts",
-		"/Users/matthewbrandman/overwatchSite/src/app/match.service.ts",
 		"/Users/matthewbrandman/overwatchSite/node_modules/lite-server/node_modules/browser-sync/node_modules/rx/ts/rx.lite.d.ts",
 		"/Users/matthewbrandman/overwatchSite/src/app/player.ts",
 		"/Users/matthewbrandman/overwatchSite/src/app/auth.service.ts",
 		"/Users/matthewbrandman/overwatchSite/src/app/match.ts",
-		"/Users/matthewbrandman/overwatchSite/src/app/match-detail.component.html",
 		"/Users/matthewbrandman/overwatchSite/src/app/match-detail.component.ts",
 		"/Users/matthewbrandman/overwatchSite/src/app/readycheck-modal.component.ts",
-		"/Users/matthewbrandman/overwatchSite/src/app/app.module.ts",
-		"/Users/matthewbrandman/overwatchSite/src/app/user-detail.component.ts",
 		"/Users/matthewbrandman/overwatchSite/src/app/readycheck-modal.component.html",
-		"/Users/matthewbrandman/overwatchSite/src/app/user-detail.component.html",
 		"/Users/matthewbrandman/overwatchSite/src/app/app.component.ts",
-		"/Users/matthewbrandman/overwatchSite/src/index.html",
 		"/Users/matthewbrandman/overwatchSite/src/app/readcheck-model.component.html",
 		"/Users/matthewbrandman/overwatchSite/src/app/user.ts",
 		"/Users/matthewbrandman/overwatchSite/src/app/user-auth-form.component.ts",
@@ -800,6 +817,7 @@
 		"height": 93.0,
 		"where_history":
 		[
+			"*.*",
 			"<current file>",
 			"",
 			"*.*",
@@ -816,6 +834,10 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"here ...",
+			"AppComponent",
+			"Loading",
+			".navigate",
 			"console.log",
 			"modal",
 			"x",
@@ -939,11 +961,7 @@
 			"tenant",
 			"django-tenants",
 			"correctorg",
-			"tenant_objects",
-			"tenant_ob",
-			"_thread_lo",
-			"70",
-			"tenant"
+			"tenant_objects"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -994,24 +1012,24 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 3,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "src/app/match.service.ts",
+					"file": "src/app/user-auth-form.component.ts",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1955,
+						"buffer_size": 1545,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1503,
-								1503
+								168,
+								127
 							]
 						],
 						"settings":
@@ -1031,19 +1049,136 @@
 							"use_tab_stops": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 187.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/app/user-detail.component.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 394,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								244,
+								244
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"typescript_plugin_format_options":
+							{
+								"convertTabsToSpaces": false,
+								"indentSize": 4,
+								"tabSize": 4
+							}
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/app/user-detail.component.ts",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1777,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1604,
+								1604
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/TypeScript/TypeScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true,
+							"typescript_plugin_format_options":
+							{
+								"convertTabsToSpaces": true,
+								"indentSize": 2,
+								"tabSize": 2
+							},
+							"use_tab_stops": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 152.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "src/app/match-detail.component.ts",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1074,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1074,
+								1074
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/TypeScript/TypeScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true,
+							"typescript_plugin_format_options":
+							{
+								"convertTabsToSpaces": true,
+								"indentSize": 2,
+								"tabSize": 2
+							},
+							"use_tab_stops": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
 					"type": "text"
 				},
 				{
-					"buffer": 1,
-					"file": "src/app/match.ts",
+					"buffer": 4,
+					"file": "src/app/auth.service.ts",
 					"semi_transient": true,
 					"settings":
 					{
-						"buffer_size": 132,
+						"buffer_size": 1666,
 						"regions":
 						{
 						},
@@ -1060,72 +1195,44 @@
 							"remote_loading": false,
 							"synced": false,
 							"syntax": "Packages/TypeScript/TypeScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true,
 							"typescript_plugin_format_options":
 							{
-								"convertTabsToSpaces": false,
-								"indentSize": 4,
-								"tabSize": 4
+								"convertTabsToSpaces": true,
+								"indentSize": 2,
+								"tabSize": 2
 							},
 							"use_tab_stops": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "src/app/match-detail.component.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 539,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								419,
-								419
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/HTML/HTML.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 17.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "src/app/match-detail.component.ts",
+					"buffer": 5,
+					"file": "src/app/socket.service.ts",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 789,
+						"buffer_size": 1037,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								495,
-								495
+								586,
+								586
 							]
 						],
 						"settings":
 						{
 							"incomplete_sync": null,
+							"open_with_edit": true,
 							"remote_loading": false,
 							"synced": false,
 							"syntax": "Packages/TypeScript/TypeScript.tmLanguage",

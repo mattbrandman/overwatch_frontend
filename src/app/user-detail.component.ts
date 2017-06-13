@@ -35,7 +35,7 @@ export class UserDetailComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     var socket = this.socket
     var readyModal = this.readyModal
-    socket.on('readyCheck', 
+    socket.once('readyCheck', 
       function() {
         var readyPromise = readyModal.open();
         readyPromise.then(
@@ -45,8 +45,8 @@ export class UserDetailComponent implements OnInit, AfterViewInit {
             }
           });
         });
-    socket.on('gameStarted', (data: any) => this.router.navigate(['/match']));
-    socket.on('inGame', (data: any) => this.router.navigate(['/match']));
+    socket.once('gameStarted', (data: any) => this.router.navigate(['/match']));
+    socket.once('inGame', (data: any) => this.router.navigate(['/match']));
   }
 
 

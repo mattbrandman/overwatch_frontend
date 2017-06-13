@@ -23,10 +23,12 @@ export class OwSocket {
       this.socket = io(this.url);
       this.socket.on('connect', (function() {
         this.socket.emit('authenticate', {token: jwt})
-              .on('authenticated', function() {
+        this.socket.on('authenticated', function() {
                 console.log('success')
-              })
+        })
       }).bind(this));
+      this.connected = true;
+      console.log(this.connected);
     }
   }
 

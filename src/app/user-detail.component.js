@@ -35,7 +35,7 @@ var UserDetailComponent = (function () {
         var _this = this;
         var socket = this.socket;
         var readyModal = this.readyModal;
-        socket.on('readyCheck', function () {
+        socket.once('readyCheck', function () {
             var readyPromise = readyModal.open();
             readyPromise.then(function (result) {
                 if (result == 'Ready') {
@@ -43,8 +43,8 @@ var UserDetailComponent = (function () {
                 }
             });
         });
-        socket.on('gameStarted', function (data) { return _this.router.navigate(['/match']); });
-        socket.on('inGame', function (data) { return _this.router.navigate(['/match']); });
+        socket.once('gameStarted', function (data) { return _this.router.navigate(['/match']); });
+        socket.once('inGame', function (data) { return _this.router.navigate(['/match']); });
     };
     UserDetailComponent.prototype.joinQueue = function () {
         var socket = this.socket;
