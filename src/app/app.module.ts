@@ -12,6 +12,7 @@ import { UserDetailComponent } from './user-detail.component';
 import { HttpModule, JsonpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router'; 
 import { AuthModule } from './auth.module';
+import { OwSocket } from './socket.service';
 
 
 
@@ -44,6 +45,7 @@ const appRoutes: Routes = [
     NgbdModalContent,
   ],
   bootstrap:    [ AppComponent ],
-  entryComponents: [NgbdModalContent]
+  entryComponents: [ NgbdModalContent ],
+  providers: [ OwSocket ]
 })
 export class AppModule { }

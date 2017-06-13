@@ -10,9 +10,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var match_service_1 = require("./match.service");
+var socket_service_1 = require("./socket.service");
+var router_1 = require("@angular/router");
 var MatchDetailComponent = (function () {
-    function MatchDetailComponent(matchService) {
+    function MatchDetailComponent(matchService, socketService, router) {
         this.matchService = matchService;
+        this.socketService = socketService;
+        this.router = router;
         this.teamVote = 0;
         this.mode = 'Observable';
     }
@@ -20,6 +24,8 @@ var MatchDetailComponent = (function () {
         var _this = this;
         this.matchService.get_match()
             .subscribe(function (data) { return _this.match = data; });
+        this.socketService.connect();
+        this.socketService.getSocket().on('gameOver', function (data) { _this.router.navigate(['/profile']); });
     };
     MatchDetailComponent.prototype.clicker = function (winner) {
         this.teamVote = winner;
@@ -34,7 +40,7 @@ MatchDetailComponent = __decorate([
         templateUrl: './match-detail.component.html',
         providers: [match_service_1.MatchService]
     }),
-    __metadata("design:paramtypes", [match_service_1.MatchService])
+    __metadata("design:paramtypes", [match_service_1.MatchService, socket_service_1.OwSocket, router_1.Router])
 ], MatchDetailComponent);
 exports.MatchDetailComponent = MatchDetailComponent;
 //# sourceMappingURL=match-detail.component.js.map

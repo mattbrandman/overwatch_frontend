@@ -10,11 +10,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var auth_service_1 = require("./auth.service");
-var io = require("socket.io-client");
 var readycheck_modal_component_1 = require("./readycheck-modal.component");
+var socket_service_1 = require("./socket.service");
+var router_1 = require("@angular/router");
 var UserDetailComponent = (function () {
-    function UserDetailComponent(authService) {
+    function UserDetailComponent(authService, socketService, router) {
         this.authService = authService;
+        this.socketService = socketService;
+        this.router = router;
         this.mode = 'Observable';
         this.in_queue = false;
     }
@@ -22,19 +25,14 @@ var UserDetailComponent = (function () {
         var _this = this;
         this.authService.get_profile()
             .subscribe(function (new_user) { return _this.user = new_user; });
-        var jwt = localStorage.getItem('token');
-        this.socket = io('http://localhost:8080');
-        this.socket.on('connect', (function () {
-            this.socket.emit('authenticate', { token: jwt })
-                .on('authenticated', function () {
-                console.log('success');
-            });
-        }).bind(this));
+        this.socketService.connect();
+        this.socket = this.socketService.getSocket();
         this.socket.on('inQueue', function () {
             console.log('answered');
         });
     };
     UserDetailComponent.prototype.ngAfterViewInit = function () {
+        var _this = this;
         var socket = this.socket;
         var readyModal = this.readyModal;
         socket.on('readyCheck', function () {
@@ -45,10 +43,16 @@ var UserDetailComponent = (function () {
                 }
             });
         });
+        socket.on('gameStarted', function (data) { return _this.router.navigate(['/match']); });
+        socket.on('inGame', function (data) { return _this.router.navigate(['/match']); });
     };
     UserDetailComponent.prototype.joinQueue = function () {
         var socket = this.socket;
         socket.emit('joinQueue');
+    };
+    UserDetailComponent.prototype.clickey = function () {
+        console.log('heard');
+        this.router.navigate(['/match']);
     };
     return UserDetailComponent;
 }());
@@ -62,7 +66,7 @@ UserDetailComponent = __decorate([
         templateUrl: './user-detail.component.html',
         providers: [auth_service_1.AuthService],
     }),
-    __metadata("design:paramtypes", [auth_service_1.AuthService])
+    __metadata("design:paramtypes", [auth_service_1.AuthService, socket_service_1.OwSocket, router_1.Router])
 ], UserDetailComponent);
 exports.UserDetailComponent = UserDetailComponent;
 //# sourceMappingURL=user-detail.component.js.map

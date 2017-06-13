@@ -23,7 +23,7 @@ export class MatchService {
     					.catch(this.handleError); 
   }
  
-  extractData(res: Response): number {
+  extractData(res: Response): Match {
   	let body = res.json();
     let players = body.players;
     var team1 = this.filterByTeam(players, 1);

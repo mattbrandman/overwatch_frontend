@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"ma",
+				"matchService\tproperty"
+			],
+			[
 				"Ng",
 				"NgbdModalContent\talias"
 			],
@@ -510,10 +514,6 @@
 			[
 				"fail",
 				"failing_servers\tstatement"
-			],
-			[
-				"append",
-				"append-entry-response"
 			]
 		]
 	},
@@ -523,16 +523,34 @@
 			"file": "src/app/match.service.ts",
 			"settings":
 			{
-				"buffer_size": 1681,
+				"buffer_size": 1955,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "node_modules/rxjs/Observable.d.ts",
+			"file": "src/app/match.ts",
 			"settings":
 			{
-				"buffer_size": 3867,
+				"buffer_size": 132,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/app/match-detail.component.html",
+			"settings":
+			{
+				"buffer_size": 539,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/app/match-detail.component.ts",
+			"settings":
+			{
+				"buffer_size": 789,
+				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		}
@@ -724,13 +742,16 @@
 	"expanded_folders":
 	[
 		"/Users/matthewbrandman/overwatchSite",
-		"/Users/matthewbrandman/overwatchSite/node_modules",
 		"/Users/matthewbrandman/overwatchSite/node_modules/rxjs",
+		"/Users/matthewbrandman/overwatchSite/node_modules/rxjs/src",
 		"/Users/matthewbrandman/overwatchSite/src",
 		"/Users/matthewbrandman/overwatchSite/src/app"
 	],
 	"file_history":
 	[
+		"/Users/matthewbrandman/overwatchSite/node_modules/rxjs/Observable.d.ts",
+		"/Users/matthewbrandman/overwatchSite/src/app/team-detail.component.ts",
+		"/Users/matthewbrandman/overwatchSite/src/app/match.service.ts",
 		"/Users/matthewbrandman/overwatchSite/node_modules/lite-server/node_modules/browser-sync/node_modules/rx/ts/rx.lite.d.ts",
 		"/Users/matthewbrandman/overwatchSite/src/app/player.ts",
 		"/Users/matthewbrandman/overwatchSite/src/app/auth.service.ts",
@@ -740,7 +761,6 @@
 		"/Users/matthewbrandman/overwatchSite/src/app/readycheck-modal.component.ts",
 		"/Users/matthewbrandman/overwatchSite/src/app/app.module.ts",
 		"/Users/matthewbrandman/overwatchSite/src/app/user-detail.component.ts",
-		"/Users/matthewbrandman/overwatchSite/src/app/match.service.ts",
 		"/Users/matthewbrandman/overwatchSite/src/app/readycheck-modal.component.html",
 		"/Users/matthewbrandman/overwatchSite/src/app/user-detail.component.html",
 		"/Users/matthewbrandman/overwatchSite/src/app/app.component.ts",
@@ -751,7 +771,6 @@
 		"/Users/matthewbrandman/Downloads/Princess_Trainer_2.03-mac/Princess Trainer GE.app/Contents/Info.plist",
 		"/Users/matthewbrandman/overwatchSite/bs-config.json",
 		"/Users/matthewbrandman/overwatchSite/src/app/user-auth-form.component.html",
-		"/Users/matthewbrandman/overwatchSite/src/app/team-detail.component.ts",
 		"/Users/matthewbrandman/overwatchSite/package.json",
 		"/Users/matthewbrandman/overwatchSite/angular_ow.sublime-project",
 		"/Users/matthewbrandman/overwatchSite/src/app/auth.module.ts",
@@ -975,7 +994,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -984,15 +1003,124 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1681,
+						"buffer_size": 1955,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								587,
-								597
+								1503,
+								1503
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/TypeScript/TypeScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true,
+							"typescript_plugin_format_options":
+							{
+								"convertTabsToSpaces": true,
+								"indentSize": 2,
+								"tabSize": 2
+							},
+							"use_tab_stops": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 187.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/app/match.ts",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 132,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/TypeScript/TypeScript.tmLanguage",
+							"typescript_plugin_format_options":
+							{
+								"convertTabsToSpaces": false,
+								"indentSize": 4,
+								"tabSize": 4
+							},
+							"use_tab_stops": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/app/match-detail.component.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 539,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								419,
+								419
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/HTML/HTML.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "src/app/match-detail.component.ts",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 789,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								495,
+								495
 							]
 						],
 						"settings":
@@ -1015,47 +1143,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "node_modules/rxjs/Observable.d.ts",
-					"semi_transient": true,
-					"settings":
-					{
-						"buffer_size": 3867,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/TypeScript/TypeScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true,
-							"typescript_plugin_format_options":
-							{
-								"convertTabsToSpaces": true,
-								"indentSize": 4,
-								"tabSize": 4
-							},
-							"use_tab_stops": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
+					"stack_index": 3,
 					"type": "text"
 				}
 			]

@@ -18,6 +18,7 @@ var user_detail_component_1 = require("./user-detail.component");
 var http_1 = require("@angular/http");
 var router_1 = require("@angular/router");
 var auth_module_1 = require("./auth.module");
+var socket_service_1 = require("./socket.service");
 var appRoutes = [
     { path: 'signup', component: user_auth_form_component_1.UserAuthFormComponent },
     { path: 'profile', component: user_detail_component_1.UserDetailComponent },
@@ -51,7 +52,8 @@ AppModule = __decorate([
             readycheck_modal_component_1.NgbdModalContent,
         ],
         bootstrap: [app_component_1.AppComponent],
-        entryComponents: [readycheck_modal_component_1.NgbdModalContent]
+        entryComponents: [readycheck_modal_component_1.NgbdModalContent],
+        providers: [socket_service_1.OwSocket]
     })
 ], AppModule);
 exports.AppModule = AppModule;

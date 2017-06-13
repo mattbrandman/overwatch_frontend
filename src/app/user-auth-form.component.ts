@@ -20,7 +20,8 @@ export class UserAuthFormComponent {
                           console.log('hi');
                           localStorage.setItem('token', user.token);
                           localStorage.setItem('hi', 'noe');
-                          this.router.navigate(['/profile'])
+                          console.log(this.router.url);
+                          this.router.navigate(['/profile']);
                         });
   }
 

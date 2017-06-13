@@ -1,13 +1,14 @@
 import { Component, Input, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { User } from './user';
-import { AuthService } from './auth.service'
-import * as io from 'socket.io-client';
-import { NgbdModalComponent } from './readycheck-modal.component'
+import { AuthService } from './auth.service';
+import { NgbdModalComponent } from './readycheck-modal.component';
+import { OwSocket } from './socket.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'user-detail',
   templateUrl: './user-detail.component.html',
-  providers: [ AuthService],
+  providers: [ AuthService ],
 })
 export class UserDetailComponent implements OnInit, AfterViewInit {
   public user: User;
@@ -16,24 +17,15 @@ export class UserDetailComponent implements OnInit, AfterViewInit {
   private socket: any;
   @ViewChild(NgbdModalComponent) readyModal: NgbdModalComponent;
   constructor(
-    private authService: AuthService) {}
+    private authService: AuthService, private socketService: OwSocket, private router: Router) {}
 
   ngOnInit(){
     this.authService.get_profile()
                      .subscribe(
                        new_user => this.user = new_user);
 
-    var jwt = localStorage.getItem('token');
-    
-    this.socket = io('http://localhost:8080');
-
-    this.socket.on('connect', (function() {
-      this.socket.emit('authenticate', {token: jwt})
-            .on('authenticated', function() {
-              console.log('success')
-            })
-    }).bind(this));
-
+    this.socketService.connect();
+    this.socket = this.socketService.getSocket();
     this.socket.on('inQueue', function() {
       console.log('answered');
     });
@@ -53,12 +45,20 @@ export class UserDetailComponent implements OnInit, AfterViewInit {
             }
           });
         });
+    socket.on('gameStarted', (data: any) => this.router.navigate(['/match']));
+    socket.on('inGame', (data: any) => this.router.navigate(['/match']));
   }
+
 
   joinQueue() {
     var socket = this.socket;
     socket.emit('joinQueue');
 
+  }
+
+  clickey() {
+    console.log('heard')
+    this.router.navigate(['/match']);
   }
 
 }

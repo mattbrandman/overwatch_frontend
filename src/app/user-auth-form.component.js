@@ -27,6 +27,7 @@ var UserAuthFormComponent = (function () {
             console.log('hi');
             localStorage.setItem('token', user.token);
             localStorage.setItem('hi', 'noe');
+            console.log(_this.router.url);
             _this.router.navigate(['/profile']);
         });
     };
