@@ -6,6 +6,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 var core_1 = require("@angular/core");
+var Observable_1 = require("rxjs/Observable");
 var io = require("socket.io-client");
 require("rxjs/add/operator/map");
 require("rxjs/add/operator/catch");
@@ -16,6 +17,7 @@ var OwSocket = (function () {
     }
     OwSocket.prototype.connect = function () {
         if (!this.connected) {
+            console.log('here');
             var jwt = localStorage.getItem('token');
             this.socket = io(this.url);
             this.socket.on('connect', (function () {
@@ -33,6 +35,15 @@ var OwSocket = (function () {
     };
     OwSocket.prototype.sendMessage = function (event, message) {
         this.socket.emit(event, message);
+    };
+    OwSocket.prototype.getReadyCheck = function () {
+        var _this = this;
+        var observable = new Observable_1.Observable(function (observer) {
+            _this.socket.on('readyCheck', function () {
+                observer.next('');
+            });
+        });
+        return observable;
     };
     return OwSocket;
 }());

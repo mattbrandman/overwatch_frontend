@@ -31,11 +31,14 @@ var UserDetailComponent = (function () {
             console.log('answered');
         });
     };
+    UserDetailComponent.prototype.ngOnDestroy = function () {
+        this.readyCheckSub.unsubscribe();
+    };
     UserDetailComponent.prototype.ngAfterViewInit = function () {
         var _this = this;
         var socket = this.socket;
         var readyModal = this.readyModal;
-        socket.once('readyCheck', function () {
+        this.readyCheckSub = this.socketService.getReadyCheck().subscribe(function (message) {
             var readyPromise = readyModal.open();
             readyPromise.then(function (result) {
                 if (result == 'Ready') {

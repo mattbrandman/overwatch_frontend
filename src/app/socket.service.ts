@@ -5,6 +5,7 @@ import { Match } from './match';
 import { Router } from '@angular/router';
 import { AuthHttp } from 'angular2-jwt';
 import { Observable } from 'rxjs/Observable';
+import { Observer } from 'rxjs/Observer';
 import { Player } from './player';
 import * as io from 'socket.io-client';
 import 'rxjs/add/operator/map';
@@ -19,6 +20,7 @@ export class OwSocket {
   connect() {
 
     if (!this.connected) {
+      console.log('here');
       var jwt = localStorage.getItem('token');
       this.socket = io(this.url);
       this.socket.on('connect', (function() {
@@ -39,4 +41,13 @@ export class OwSocket {
   sendMessage(event: String, message: any){
     this.socket.emit(event, message);    
   }  
+
+  getReadyCheck() {
+    let observable = new Observable((observer: Observer<any>) => {
+      this.socket.on('readyCheck', () => {
+        observer.next('');   
+      });
+    });    
+    return observable;
+  }
 }
